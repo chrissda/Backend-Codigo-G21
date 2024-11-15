@@ -24,6 +24,9 @@ Chriss"""
 # Int
 edad = 32
 # Boolean
-casado = True
+casado = False
 # Float
 estatura = 1.77
+
+print(otro_enunciado)
+print(100)
