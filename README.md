@@ -10,5 +10,5 @@ Este será el repositorio del módulo de backend para el grupo G21 de CodiGo. La
 6. Semana 06 <a href="https://github.com/">click aqui</a>
 7. Semana 07 <a href="https://github.com/">click aqui</a>
 8. Semana 08 <a href="https://github.com/">click aqui</a>
-9. Semana 09 <a href="https://github.com/">cclick aqui</a>
+9. Semana 09 <a href="https://github.com/">click aqui</a>
 10. Semana 10 <a href="https://github.com/">click aqui</a>
