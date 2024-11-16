@@ -70,4 +70,5 @@ print(numero2)
 
 # BOOLEAN
 libre = True
+# En python para utilizar el operador '!' se tiene que utilizar el operador 'not'
 print(not libre)
