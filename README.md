@@ -2,7 +2,7 @@
 
 Este será el repositorio del módulo de backend para el grupo G21 de CodiGo. Las semanas estarán distribuidas en ramas, es decir , la semana 01 será la rama <a href="https://github.com/">semana01</a>
 
-1. Semana 01 <a href="https://github.com/">click aqui</a>
+1. Semana 01 <a href="https://github.com/chrissda/Backend-Codigo-G21/tree/semana01">click aqui</a>
 2. Semana 02 <a href="https://github.com/">click aqui</a>
 3. Semana 03 <a href="https://github.com/">click aqui</a>
 4. Semana 04 <a href="https://github.com/">click aqui</a>
