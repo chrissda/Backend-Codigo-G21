@@ -34,3 +34,15 @@ else:
 # Al final retornar un mensaje diciendo 'El alumno EDUARDO esta aprobado y exonerado de la expocision final' > 15 y 17
 # deadline Miercoles 20/11 18:59:59
 
+def resultado_final(nombre, nota):
+    if nota <= 20 and nota >= 18:
+        print('El alumno ' + nombre  + ' tiene felicitación publica')
+    elif nota <= 17 and nota >= 15:
+        print('El alumno ' + nombre + ' está aprobado y exonerado de la exposición final.')
+    elif nota <= 14 and nota >= 11:
+        print('El alumno ' + nombre + ' está aprobado.')
+    else:
+        print('El alumno ' + nombre + ' está jalado.')
+
+
+resultado_final('Chriss', 17)
