@@ -1,3 +1,5 @@
+psql -U postgres -h HOSTNAME -p PUERTO NOMBRE_DATABASE > conexion mas exacta para conectarnos a la bd
+
 -- Asi se define un comentario en las bases de datos
 -- DDL (Data Definition Language) es un sublenguaje de SQL para definir como se almacenaran los datos
 CREATE DATABASE pruebas;
@@ -56,4 +58,6 @@ SELECT * FROM alumnos WHERE matriculado = FALSE;
 -- Mostrara todos los alumnos que esten matriculaods y su id sea menor que 3
 SELECT * FROM alumnos WHERE matriculado = TRUE AND id < 3;
 
--- Mostrara todos 
+-- Devolver todos los alumnos que esen matriculados y que su fecha de nacimiento sea el 1-01-1995
+SELECT * FROM alumnos WHERE matriculado = TRUE AND fecha_nacimiento > '1995-01-01';
+
