@@ -44,6 +44,7 @@ SELECT * FROM clientes WHERE activo = TRUE AND status = 'CLIENTE RIESGOSO';
 SELECT * FROM clientes WHERE correo ILIKE '%gmail%' OR status = 'CLIENTE RIESGOSO';
 
 -- Mostrar todos los clientes cuyo nombre tengan el apellido Gonza o Juarez y que no esten activos
-SELECT * FROM clientes WHERE nombre ILIKE '%Gonza%' OR nombre ILIKE '%Jaurez%' AND activo = false;
+SELECT * FROM clientes WHERE (nombre ILIKE '%Gonza%' OR nombre ILIKE '%Jaurez%') AND activo = false;
 
 -- Mostrar todos los clientes cuyo nombre tengan el apellido Gonza o Juarez y que esten activos
+SELECT * FROM clientes WHERE (nombre ILIKE '%Gonza%' OR nombre ILIKE '%Juarez%') AND activo = true;
