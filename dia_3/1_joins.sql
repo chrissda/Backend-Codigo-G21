@@ -85,3 +85,36 @@ WHEN activo IS TRUE THEN 'ESTA ACTIVO EL CLIENTE'
 WHEN activo IS FALSE THEN 'ESTA CLIENTE NO PUEDE HACER OPERACIONES'
 ELSE 'HUBO UN ERROR'
 END, activo FROM clientes;
+
+-- Usando el switch case Mostrar los movimientos que sean DEPOSITO, TRANSFERENCIA o RETIRO, siendo:
+-- DEPOSITO: Cuando no hay cuenta_origen pero si cuenta destino
+-- TRANSFERENCIA: Cuando hay cuenta_origen y cuenta_destino
+-- RETIRO : Cuando hay cuenta_origen y no hay cuenta_destino
+-- y sus montos
+
+SELECT CASE
+WHEN cuenta_origen IS NULL AND cuenta_destino IS NOT NULL THEN 'DEPOSITO'
+WHEN cuenta_origen IS NOT NULL AND cuenta_destino IS NOT NULL THEN 'TRANSFERENCIA'
+WHEN cuenta_origen IS NOT NULL AND cuenta_destino IS NULL THEN 'RETIRO'
+END, monto FROM movimientos;
+
+-- EN base al correo de los clientes hacer lo siguiente
+-- Si el correo es gmail > 'ES UNA PERSONA JOVEN'
+-- Si el correo es hotmail > 'ES UNA PERSONA ADULTA'
+-- Si el correo es yahoo > 'ES UN DINOSAURIO'
+-- PISTA: Usar el like en el CASE
+
+SELECT CASE
+WHEN correo LIKE '%gmail%' THEN 'ES UNA PERSONA JOVEN'
+WHEN correo LIKE '%hotmail%' THEN 'ES UNA PERSONA ADULTA'
+WHEN correo LIKE '%yahoo%' THEN 'ES UN DINOSAURIO'
+ELSE 'DOMINIO DESCONOCIDO'
+END AS calculo_edad_personas FROM clientes;
+
+-- Usando la funcion de agregacion SUM obtener los debitos de todas cuenta(Lo que sale) cuenta_origen NO ES NULA
+SELECT cuenta_origen, SUM(monto) AS entra FROM movimientos WHERE cuenta_origen IS NOT NULL 
+GROUP BY cuenta_origen;
+
+-- Obtener los creditos de todas las cuentas ( lo que llega / entra) > cuenta_destino NO ES NULA
+SELECT cuenta_destino, SUM(monto) AS sale FROM movimientos WHERE cuenta_destino IS NOT NULL 
+GROUP BY cuenta_destino;
