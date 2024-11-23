@@ -64,5 +64,6 @@ WITH conteo AS (SELECT cliente_id, count(cliente_id) AS total FROM cuentas GROUP
 conteo_maximo AS (SELECT MAX(total) AS conteo_maximo_total FROM conteo) --2
 SELECT cliente_id, total FROM conteo WHERE total = (SELECT conteo_maximo_total FROM conteo_maximo);
 
-SELECT cliente_id, COUNT(cliente_id) FROM cuentas GROUP BY cliente_id
+SELECT cliente_id, COUNT(cliente_id) FROM cuentas 
+GROUP BY cliente_id
 HAVING COUNT(cliente_id) = (SELECT COUNT(cliente_id) FROM cuentas GROUP BY cliente_id LIMIT 1);
