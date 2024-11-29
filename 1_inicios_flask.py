@@ -56,10 +56,53 @@ def listar_clientes():
     # fetchmany(limite) > devuelve los regstros hasta el limite
     # fetchone() > devuelve el primer registro del select
     data = cursor.fetchall()
+    
+    resultado = []
 
-    print(data)
+    for registro in data:
+        informacion_cliente = {
+            'id': registro[0],
+            'nombre': registro[1],
+            'correo': registro[2],
+            'status': registro[3],
+            'activo': registro[4],
+            'fecha_creacion': registro[5]
+        }
+        print(informacion_cliente)
+        resultado.append(informacion_cliente)
+    
     return {
-        'message': 'Los clientes son: '
+        'message': 'Los clientes son',
+        'content': resultado
+    }
+
+# Crear un ENDPOINT en el cual sira para devolver un cliente por su ID
+# /cliente/1 > Rodrigo
+
+@app.route('/cliente/<int:id>', methods=['GET'])
+def devolver_cliente(id):
+    # Primero me conecto a la BD
+    cursor = conexion.cursor()
+    # Ejecuto la consulta para obtener el cliente
+    cursor.execute(f'SELECT * FROM clientes WHERE id = {id}')
+    # fetchone porque solo queremos ubicar 1 cliente
+    cliente_encontrado = cursor.fetchone()
+    # None es null significa no hay datos
+    if cliente_encontrado is None:
+        return {
+            'message': 'El cliente no existe'
+        }
+    resultado = {
+        'id': cliente_encontrado[0],
+        'nombre': cliente_encontrado[1],
+        'correo': cliente_encontrado[2],
+        'status': cliente_encontrado[3],
+        'activo': cliente_encontrado[4],
+        'fecha_creacion': cliente_encontrado[5]
+    }
+    return {
+        'message': 'Usuario encontrado',
+        'content': resultado
     }
 
 
