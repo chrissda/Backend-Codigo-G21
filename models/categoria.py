@@ -19,5 +19,5 @@ class CategoriaModel(conexion.Model):
     # el nombre de la tabla se debe llamar categorias
     __tablename__ = 'categorias'
     # Si en nuestra instancia de sqlalchemy estamos usando mas de un conector, entonces debemos en cada tabla que usemos indicar a que conexion nos referiremos, esto servira para cuestiones de creacion de tabla y para la lectura y modificacion de datos
-    __bind_key__ = 'postgres'
+    __bind_key__ = 'postgres2'
 

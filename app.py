@@ -3,12 +3,16 @@ from instancias import conexion
 from os import environ
 from dotenv import load_dotenv
 from flask_migrate import Migrate
+# Sera la encargada de gestionar todas las rutas de mi aplicacion
+from flask_restful import Api 
 from models import *
+from controllers import *
 
 # revisara si hay algun archivo llamado .env y leera las variables definidas en el y las colocara como variables de entorno
 load_dotenv()
 
 app = Flask(__name__)
+api = Api(app)
 # Si vamos a tener mas de una conexion a diferentes de base de datos, entonces debemos utilizar la variable SQLALCHEMY_BINDS
 # Tengo que definir una conexion por defecto
 app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL')
@@ -28,6 +32,8 @@ conexion.init_app(app)
 #     id = Column(type_=types.Integer)
 
 Migrate(app, conexion)
+
+api.add_resource(CategoriaController, '/categorias')
 
 if __name__ == '__main__':
     app.run(debug=True)
