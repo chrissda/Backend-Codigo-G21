@@ -4,6 +4,8 @@ from os import environ
 from dotenv import load_dotenv
 from flask_migrate import Migrate
 from models import *
+from controllers import *
+from flask_restful import Api
 
 load_dotenv()
 
@@ -18,6 +20,13 @@ app.config['SQLALCHEMY_BINDS'] = {
 conexion.init_app(app)
 
 Migrate(app, conexion)
+
+api = Api(app)
+
+api.add_resource(CategoriasController, '/categorias')
+api.add_resource(RegistroController, '/registro')
+api.add_resource(LoginController, '/login')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

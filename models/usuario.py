@@ -13,6 +13,7 @@ class Usuario(conexion.Model):
     nombre = Column(type_=types.Text)
     apellido = Column(type_=types.Text)
     # En mysql no puede haber una columna que sea texto y unica
+    # Ahora usaremos una columna VARCHAR como limite definido de 100 caracteres
     correo = Column(type_=types.String(100), unique=True, nullable=False)
     password = Column(type_=types.Text)
     tipo_usuario = Column(type_=types.Enum(TipoUsuario),
