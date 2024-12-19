@@ -3,12 +3,16 @@ from instancias import conexion
 from models import Categoria
 from .serializers import CategoriaSerializer
 from marshmallow.exceptions import ValidationError
+from flask_jwt_extended import jwt_required
 
 class CategoriasController(Resource):
     # Atributo de la clase
     serializador = CategoriaSerializer()
 
+    @jwt_required()
     def post(self):
+        # Validamos que el usuario sea admin para poder crear la categoria
+        # ...
         data = request.get_json()
         try:
             data_serializada = self.serializador.load(data)
