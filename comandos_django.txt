@@ -1,0 +1,8 @@
+django-admin 
+py manage.py makemigrations --name NOMBRE_APP migracion_inicial
+py manage.py migrate
+py manage.py showmigrations
+py manage.py createsuperuser        > Crea un nuevo super usuario
+
+chriss
+Gaaaaa12345
