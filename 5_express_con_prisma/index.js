@@ -1,0 +1,68 @@
+import express from 'express'
+// Esta libreria se agrega cuando creamos los tipos de prisma
+// npx prisma migrate generate
+// Cuando creamos una nueva migracion y se ejecuta en la bd
+import Prisma from "@prisma/client"
+
+const conexion = new Prisma.PrismaClient();
+const servidor = express();
+
+servidor.use(express.json());
+
+servidor.post("/registro", async (req, res) => {
+    try {
+        const data = req.body; // {nombre: '', email: '', nickName: ''}
+
+        // resultado > seria la ejecucion correcta de la funcion
+        const resultado = await conexion.usuario.create({
+            data, // : {nombre: data.nombre, email: data.email, nickName: data.nickName },
+        });
+        //ACA PONEMOS EL MENSAJE
+        return res.json({
+            message: "Usuario creado exitosamente.",
+            content: resultado,
+        });
+    } catch (error) {
+        // obtenemos el error de la ejecucion del proceso asincrono
+        if(error instanceof Prisma.Prisma.PrismaClientValidationError) {
+            return res.json({
+                message: "error al hacer la peticion a la bd",
+            });
+        }
+        return res.json({
+            message: "Error al crear el usuario",
+        });
+    }
+});
+
+// Si una ruta va tener mas de un verbo http entonces se recomienda encapsularlas mediante el metodo route
+servidor
+    .route("/notas")
+    .post(async(req, res) => {
+        const data = req.body;
+        try {
+            const notaCreada = await conexion.nota.create({ data });
+            return res.json({
+                message: "Nota creada exitosamente.",
+                content: notaCreada
+            });
+        } catch (error) {
+            console.log(error)
+            return res.json({
+                message: "Error al crear la nota.",
+                content: data
+            });
+        }
+    })
+    .get(async (req, res) => {
+        const notas = await conexion.nota.findMany();
+        return res.json({
+            content: notas,
+        });
+    });
+
+servidor.listen(process.env.PORT, () => {
+    console.log(
+        `Servidor corriendo exitosamente en el puerto ${process.env.PORT}`
+    );
+});
