@@ -1,15 +1,18 @@
 import express from "express";
 import { usuarioEnrutador } from "./routes/usuario.routes.js";
 import { equipoEnrutador } from "./routes/equipo.routes.js";
+import { imagenEnrutador } from "./routes/imagen.routes.js";
 import { ZodError } from "zod";
 import { Prisma } from "@prisma/client";
 import cors from "cors";
 import AWS from "aws-sdk";
 
 // Creamos la conexion a nuestro s3 bucket
-new AWS.S3({credentials: {
-    accessKeyId: process.env.ACCESS_KEY,
-    secretAccessKey: process.env.SECRET_ACCESS_KEY,
+// Modifica la confirguracion de conexion de AWS en toda la aplicacion
+AWS.config.update({
+    credentials: {
+        accessKeyId: process.env.ACCESS_KEY,
+        secretAccessKey: process.env.SECRET_ACCESS_KEY,
     },
     region: process.env.BUCKET_REGION,
 });
@@ -21,8 +24,10 @@ servidor.use(express.json());
 servidor.use(cors({ origi: ["http://127.0.0.1:5500"]}));
 
 // Agregamos las rutas de nuestros enrutadores
-servidor.use(usuarioEnrutador)
-servidor.use(equipoEnrutador)
+servidor.use(usuarioEnrutador);
+servidor.use(equipoEnrutador);
+servidor.use(imagenEnrutador);
+
 
 servidor.use((error, req, res, next) => {
     // Aca manejaremos los errores que podamos tener en toda nuestra aplicacion
@@ -39,6 +44,7 @@ servidor.use((error, req, res, next) => {
             message: `El ${error.meta.modelName} no existe`,
         });
     }
+    console.log(error)
 
     return res.status(400).json({
         message: "Error al hacer la peticion",
