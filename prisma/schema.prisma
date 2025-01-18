@@ -22,6 +22,8 @@ model Usuario {
   apellido String?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt() @map("updated_at")
+
+  @@map("usuarios")
 }
 
 enum TipoUsuario {
@@ -46,8 +48,8 @@ model Imagen {
 }
 
 model Equipo {
-  id Int @id @default(autoincrement())
-  nombre String
+  id  Int @id @default(autoincrement())
+  nombre String @unique
   estadio String?
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt() @map("updated_at")
@@ -59,6 +61,8 @@ model Equipo {
   // Cuando tenemos dos o mas relaciones con la misma tabla entonces nos vemos obligados a colocar el nombre de la relacion para que prisma pueda entender a que relacion debe ir determinado registro
   partidoEquipoLocal Partido[] @relation(name: "equipoLocal")
   partidoEquipoVisitante Partido[] @relation(name: "equipoVisitante")
+
+  @@map("equipos")
 }
 
 model Partido {

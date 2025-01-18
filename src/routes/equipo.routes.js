@@ -1,6 +1,6 @@
 import express from "express";
 import asyncHandler from "express-async-handler";
-import { crearEquipo } from "../controllers/equipo.controller.js";
+import { crearEquipo, listarEquipos } from "../controllers/equipo.controller.js";
 import { validarAdmin, validarUsuario } from "../middlewares.js";
 
 export const equipoEnrutador = express();
@@ -10,3 +10,5 @@ equipoEnrutador.route("/equipo").post(
     asyncHandler(validarAdmin),
     asyncHandler(crearEquipo)
 );
+
+equipoEnrutador.route("/equipos").get(asyncHandler(listarEquipos));
