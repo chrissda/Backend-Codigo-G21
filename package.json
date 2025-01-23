@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+    "express": "^4.21.2",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/pg": "^8.11.10",
+    "nodemon": "^3.1.9"
+  },
+  "name": "project",
+  "version": "1.0.0",
+  "description": "Proyecto mini para deployar en servidor aws",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env app.js",
+    "dev": "nodemon --env-file=.env app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chrissda/Backend-Codigo-G21.git"
+  },
+  "author": "Cristhian Barreto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chrissda/Backend-Codigo-G21/issues"
+  },
+  "homepage": "https://github.com/chrissda/Backend-Codigo-G21#readme"
+}
