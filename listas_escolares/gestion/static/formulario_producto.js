@@ -7,5 +7,9 @@ btnCrearProducto.addEventListener('click', (e) => {
         alert('El nombre es requerido')
         e.preventDefault()
     }
+    if(descripcionProducto.value === ''){
+        alert('La descripción es requerida')
+        e.preventDefault()
+    }
     
 })
