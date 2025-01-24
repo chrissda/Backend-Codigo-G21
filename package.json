@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.21.2",
-    "pg": "^8.13.1"
+    "pg": "^8.13.1",
+    "require": "^2.4.20"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/pg": "^8.11.10",
     "nodemon": "^3.1.9"
