@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@types/require-directory": "^2.1.6",
     "cors": "^2.8.5",
     "express": "^4.21.2",
     "pg": "^8.13.1",
@@ -11,13 +12,12 @@
     "@types/pg": "^8.11.10",
     "nodemon": "^3.1.9"
   },
-  "name": "project",
+  "name": "deploy_aws",
   "version": "1.0.0",
   "description": "Proyecto mini para deployar en servidor aws",
   "main": "app.js",
-  "type": "module",
   "scripts": {
-    "start": "node --env-file=.env app.js",
+    "start": "node app.js",
     "dev": "nodemon --env-file=.env app.js"
   },
   "repository": {
